@@ -184,7 +184,13 @@ const TreeNode = ({
 
   return (
     <>
-      <div className='TreeNode' style={ treeNodeStyle }>
+      <div
+        className='TreeNode'
+        style={ treeNodeStyle }
+        data-folder-tree-is-directory={ typeof nodeData.isOpen === 'boolean' }
+        data-folder-tree-path={ JSON.stringify(nodeData.path) }
+        data-folder-tree-id={ nodeData._id }
+      >
         { showCheckbox && (
           <CheckBox
             status={ checked }
@@ -205,6 +211,9 @@ const TreeNode = ({
         <span
           className={ iconContainerClassName('editableNameContainer') }
           onClick={ handleNameClick }
+          data-folder-tree-is-directory={ typeof nodeData.isOpen === 'boolean' }
+          data-folder-tree-path={ JSON.stringify(nodeData.path) }
+          data-folder-tree-id={ nodeData._id }
         >
           <EditableName
             isEditing={ isEditing }

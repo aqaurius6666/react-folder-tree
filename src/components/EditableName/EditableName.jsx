@@ -52,8 +52,13 @@ const EditableName = ({
   );
 
   const displayName = (
-    <span className='displayName'>
-      { name }
+    <span
+      className='displayName'
+      data-folder-tree-is-directory={ typeof nodeData.isOpen === 'boolean' }
+      data-folder-tree-path={ JSON.stringify(nodeData.path) }
+      data-folder-tree-id={ nodeData._id }
+    >
+      {name}
     </span>
   );
 
