@@ -88,8 +88,6 @@ const TreeNode = ({
   }
 
   const handleCheckBoxChange = e => {
-    if (readOnly) return;
-
     const newStatus = +e.target.checked;
     handleCheck(path, newStatus);
   };
