@@ -10,10 +10,10 @@ import {
   AiOutlineFolderOpen,
   AiOutlineFile,
   AiOutlineClose,
-  AiOutlineDelete,
-  AiOutlineEdit,
-  AiOutlineFileAdd,
-  AiOutlineFolderAdd,
+  // AiOutlineDelete,
+  // AiOutlineEdit,
+  // AiOutlineFileAdd,
+  // AiOutlineFolderAdd,
   AiOutlineCheck,
 } from 'react-icons/ai';
 
@@ -41,8 +41,8 @@ const TreeNode = ({
   const {
     handleCheck,
     handleRename,
-    handleDelete,
-    handleAddNode,
+    // handleDelete,
+    // handleAddNode,
     handleToggleOpen,
 
     iconComponents,
@@ -58,18 +58,18 @@ const TreeNode = ({
     marginLeft: path.length * indentPixels,
   };
 
-  const [isSelected, setIsSelected] = useState(false);
+  const [, setIsSelected] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
 
   const {
     FileIcon = getDefaultIcon(AiOutlineFile),
     FolderIcon = getDefaultIcon(AiOutlineFolder),
     FolderOpenIcon = getDefaultIcon(AiOutlineFolderOpen),
-    EditIcon = getDefaultIcon(AiOutlineEdit),
-    DeleteIcon = getDefaultIcon(AiOutlineDelete),
+    // EditIcon = getDefaultIcon(AiOutlineEdit),
+    // DeleteIcon = getDefaultIcon(AiOutlineDelete),
     CancelIcon = getDefaultIcon(AiOutlineClose),
-    AddFileIcon = getDefaultIcon(AiOutlineFileAdd),
-    AddFolderIcon = getDefaultIcon(AiOutlineFolderAdd),
+    // AddFileIcon = getDefaultIcon(AiOutlineFileAdd),
+    // AddFolderIcon = getDefaultIcon(AiOutlineFolderAdd),
     CaretRightIcon = getDefaultIcon(AiFillCaretRight),
     CaretDownIcon = getDefaultIcon(AiFillCaretDown),
     OKIcon = getDefaultIcon(AiOutlineCheck),
@@ -95,20 +95,20 @@ const TreeNode = ({
   const onNameChange = newName => handleRename(path, newName);
 
   const selectMe = () => (!isEditing && !readOnly && setIsSelected(true));
-  const unSelectMe = () => setIsSelected(false);
+  // const unSelectMe = () => setIsSelected(false);
 
   const openMe = () => handleToggleOpen(path, true);
   const closeMe = () => handleToggleOpen(path, false);
 
-  const editMe = () => {
-    setIsEditing(true);
-    setIsSelected(false);
-  };
+  // const editMe = () => {
+  //   setIsEditing(true);
+  //   setIsSelected(false);
+  // };
 
-  const deleteMe = () => handleDelete(path);
+  // const deleteMe = () => handleDelete(path);
 
-  const addFile = () => handleAddNode(path, false);
-  const addFolder = () => handleAddNode(path, true);
+  // const addFile = () => handleAddNode(path, false);
+  // const addFolder = () => handleAddNode(path, true);
 
   const handleNameClick = () => {
     const defaultOnClick = selectMe;
@@ -119,42 +119,42 @@ const TreeNode = ({
     }
   };
 
-  const TreeNodeToolBar = (
-    <span className={ iconContainerClassName('TreeNodeToolBar') }>
-      <EditIcon
-        className={ iconClassName('EditIcon') }
-        onClick={ editMe }
-        nodeData={ nodeData }
-      />
-      <DeleteIcon
-        className={ iconClassName('DeleteIcon') }
-        onClick={ deleteMe }
-        nodeData={ nodeData }
-      />
-      {
-        isFolder && (
-          <>
-            <AddFileIcon
-              className={ iconClassName('AddFileIcon') }
-              onClick={ addFile }
-              nodeData={ nodeData }
-            />
-            <AddFolderIcon
-              className={ iconClassName('AddFolderIcon') }
-              onClick={ addFolder }
-              nodeData={ nodeData }
-            />
-          </>
-        )
-      }
+  // const TreeNodeToolBar = (
+  //   <span className={ iconContainerClassName('TreeNodeToolBar') }>
+  //     <EditIcon
+  //       className={ iconClassName('EditIcon') }
+  //       onClick={ editMe }
+  //       nodeData={ nodeData }
+  //     />
+  //     <DeleteIcon
+  //       className={ iconClassName('DeleteIcon') }
+  //       onClick={ deleteMe }
+  //       nodeData={ nodeData }
+  //     />
+  //     {
+  //       isFolder && (
+  //         <>
+  //           <AddFileIcon
+  //             className={ iconClassName('AddFileIcon') }
+  //             onClick={ addFile }
+  //             nodeData={ nodeData }
+  //           />
+  //           <AddFolderIcon
+  //             className={ iconClassName('AddFolderIcon') }
+  //             onClick={ addFolder }
+  //             nodeData={ nodeData }
+  //           />
+  //         </>
+  //       )
+  //     }
 
-      <CancelIcon
-        className={ iconClassName('CancelIcon') }
-        onClick={ unSelectMe }
-        nodeData={ nodeData }
-      />
-    </span>
-  );
+  //     <CancelIcon
+  //       className={ iconClassName('CancelIcon') }
+  //       onClick={ unSelectMe }
+  //       nodeData={ nodeData }
+  //     />
+  //   </span>
+  // );
 
   const folderCaret = (
     <span
@@ -222,7 +222,7 @@ const TreeNode = ({
             nodeData={ nodeData }
           />
         </span>
-        { isSelected && TreeNodeToolBar }
+        {/* { isSelected && TreeNodeToolBar } */}
 
       </div>
 
