@@ -1,5 +1,6 @@
 import React, {
   useContext,
+  useRef,
   useState,
 } from 'react';
 import PropTypes from 'prop-types';
@@ -50,9 +51,10 @@ const TreeNode = ({
     onNameClick,
     showCheckbox,
     readOnly,
+    onCheckbox
   } = useContext(ConfigContext);
 
-  const isFolder = !!children;
+  const isFolder = restData['type'] ? restData['type'] === 'directory' || restData['type'] === 'folder' : !!children;
 
   const treeNodeStyle = {
     marginLeft: path.length * indentPixels,
@@ -60,6 +62,7 @@ const TreeNode = ({
 
   const [, setIsSelected] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
+  const ref = useRef(null);
 
   const {
     FileIcon = getDefaultIcon(AiOutlineFile),
@@ -90,6 +93,7 @@ const TreeNode = ({
   const handleCheckBoxChange = e => {
     const newStatus = +e.target.checked;
     handleCheck(path, newStatus);
+    onCheckbox && onCheckbox(path, newStatus);
   };
 
   const onNameChange = newName => handleRename(path, newName);
@@ -116,6 +120,9 @@ const TreeNode = ({
       !isEditing && onNameClick({ defaultOnClick, nodeData });
     } else {
       defaultOnClick();
+    }
+    if (isFolder) {
+      isOpen ? closeMe() : openMe();
     }
   };
 
@@ -159,6 +166,7 @@ const TreeNode = ({
   const folderCaret = (
     <span
       className={ iconContainerClassName('caretContainer') }
+      ref={ref}
     >
       {
         isOpen

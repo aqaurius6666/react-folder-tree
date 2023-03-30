@@ -45,6 +45,7 @@ export interface NodeData {
 
 type OnChange = (state: NodeData, event: unknown) => void;
 
+
 type OnNameClick = (opts: {
   defaultOnClick: () => void;
   nodeData: NodeData;

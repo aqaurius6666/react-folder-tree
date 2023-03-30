@@ -19,11 +19,12 @@ const testData = {
         { name: 'Chainlink' },
         {
           name: 'POW',
-          children: [
-            { name: 'Bitcoin' },
-            { name: 'Litecoin' },
-            { name: 'Bitcoin Cash' },
-          ],
+          type: 'directory'
+          // children: [
+          //   { name: 'Bitcoin' },
+          //   { name: 'Litecoin' },
+          //   { name: 'Bitcoin Cash' },
+          // ],
         },
         {
           name: 'POS',

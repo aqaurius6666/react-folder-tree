@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import useTreeState, {
-  testData,
   findTargetNode,
   findAllTargetPathByProp,
   findTargetPathByProp,
 } from 'use-tree-state';
+
+import { testData } from '../../utils/testData';
 
 import TreeNode from '../TreeNode/TreeNode';
 import ConfigContext from './context';
@@ -21,6 +22,7 @@ const FolderTree = ({
   showCheckbox = true,
   indentPixels = 30,
   onNameClick = null,
+  beforeToggleOpen = null,
   readOnly = false,
 }) => {
   const options = {
@@ -59,12 +61,12 @@ const FolderTree = ({
   return (
     <div className='FolderTree'>
       <ConfigContext.Provider
-        value={ configs }
+        value={configs}
       >
         <TreeNode
-          key={ treeState._id }
-          path={ [] }
-          { ...treeState }
+          key={treeState._id}
+          path={[]}
+          {...treeState}
         />
       </ConfigContext.Provider>
     </div>
@@ -92,6 +94,7 @@ FolderTree.propTypes = {
   indentPixels: PropTypes.number,
   onNameClick: PropTypes.func,
   showCheckbox: PropTypes.bool,
+  beforeToggleOpen: PropTypes.func,
   readOnly: PropTypes.bool,
 };
 
